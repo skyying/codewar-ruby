@@ -47,7 +47,10 @@ end
 def tick_toward(start, target)
   return [start] if start == target
 
+  # get -1, 1, 0 base on target is greater than start
   deltas = start.zip(target).map { |a, b| b <=> a }
+  # add deltas value 
   tick = start.zip(deltas).map { |a, b| a + b }
+  # recurson
   [start] + tick_toward(tick, target)
 end
