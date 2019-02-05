@@ -8,17 +8,31 @@ def smallest(n)
     a
   end
 
+  def dup_array (arr)
+    arr.inject([]) {|a, elm| a << elm.dup}
+  end
+  def getMinNumber (arr, removeIndex, insertIndex)
+    new_arr = dup_array(arr)
+    min_digit = new_arr.delete_at(removeIndex)
+    new_arr.insert(insertIndex, min_digit)
+    new_arr.join("").to_i
+  end
+
   n.each_with_index do |x, i|
     break if i == n.size
     tmp_ary = n[i+1, n.size]
     min = tmp_ary.min
     if min < x
        min_index = getMinIndex(tmp_ary, min, i)[0]
-       current_target = n[i]
-       current_min = n.delete_at(min_index)
-       n.insert(i, current_min)
-       # todo need to resolve use case 209917
-       return [n.join("").to_i, min_index, i]
+       if getMinNumber(n, min_index, i) == getMinNumber(n, i, min_index) 
+         if i < min_index
+           return [getMinNumber(n, min_index, i), i, min_index]
+         else
+           return [getMinNumber(n, min_index, i), min_index, i]
+         end
+       end
+
+       return [getMinNumber(n, min_index, i), min_index, i]
     end
   end
 end
