@@ -1,12 +1,9 @@
-def count n, d
-  x = 2
-  arr = [1]
-  while arr.last < n * n
-    arr.push(x*x)
-    x+=1;
-  end
-  arr.count { |x| x.to_s.include? d.to_s}
+# solution 1
+def nb_dig(n, d)
+  (0..n).map { |x| x*x }.reduce(0) { |sum, x| sum += x.to_s.chars.count { |g| g == d.to_s } }
 end
-puts count(10, 1)
-puts count(25, 1)
 
+# solution 2
+def nb_dig(n, d)
+  (0..n).map { |k| k ** 2 }.join.count d.to_s
+end
