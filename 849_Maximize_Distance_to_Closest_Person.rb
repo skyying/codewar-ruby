@@ -46,11 +46,7 @@ def max_dist_to_closest(seats)
        max_start = tmp_start
     end
 
-    if max_start + max == seats.size || max_start == 0
-      return max
-    end
-
-    (max + 1) / 2
+    [(max + 1) / 2, seats.find_index(1), seats.reverse.find_index(1)].max
 
 end
 
