@@ -384,7 +384,6 @@ def unique_paths(m, n)
   row_current = Array.new(m, 1)
   # should remove this message later
   p 'txxxest'
-
   p 'something eles'
   (1...n).each do |_row|
     (1...m).each do |_col|
