@@ -5,7 +5,7 @@ def unique_paths(m, n)
   row_prev = Array.new(m, 1)
   row_current = Array.new(m, 1)
   # should remove this message later
-  p 'test'
+  p 'abc'
   
   (1...n).each do |_row|
     (1...m).each do |_col|
